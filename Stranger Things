@@ -1,0 +1,35 @@
+#Stranger Things
+
+use_synth :blade
+use_synth_defaults
+use_bpm 124
+
+live_loop :one do
+  2.times do
+    use_bpm 160
+    sample :bass_hard_c
+    sleep  15
+  end
+  stop
+end
+
+
+live_loop:st do
+  play :c4
+  sleep 0.5
+  play :e4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :b4
+  sleep 0.5
+  play :c5
+  sleep 0.5
+  play :b4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :e4
+  sleep 0.5
+end
+
