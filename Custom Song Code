@@ -1,1 +1,93 @@
-# SonicPi
+#Vers. 2 Slim Shady
+
+use_bpm 105
+whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
+h = 0.5
+
+sample whistle, amp: 2
+sleep 18
+
+1.times do
+  use_synth :piano
+  play :c, amp: 0.25
+  sleep h
+  play :eb, amp: 0.25
+  sleep h
+  play :g, amp: 0.25
+  sleep h
+  play :ab, amp: 0.25
+  sleep h
+  play :c5, amp: 0.5
+  sleep 1.5
+  play :ab, amp: 0.5
+  sleep h
+  play :g, amp: 0.5
+  sleep 1.5
+  play :ab
+  sleep h
+  play :g
+  sleep 0.25
+  play :ab
+  sleep 0.22
+  play :g
+  sleep h
+  play :f
+  sleep h
+  play :g
+  sleep h
+  play :b3
+  sleep h
+end
+
+
+live_loop :s do
+  play :c
+  sleep h
+  play :eb
+  sleep h
+  play :g
+  sleep h
+  play :ab
+  sleep h
+  play :c5
+  sleep 1.5
+  play :ab
+  sleep h
+  play :g
+  sleep 1.5
+  play :ab
+  sleep h
+  play :g
+  sleep 0.25
+  play :ab
+  sleep 0.22
+  play :g
+  sleep h
+  play :f
+  sleep h
+  play :g
+  sleep h
+  play :b3
+  sleep h
+end
+
+reset
+
+with_fx :compressor do
+  sleep 8.47
+  play :e1, amp: 2
+  sleep 1
+  play :d2, amp: 2
+  sleep h
+  play :e2, amp: 2
+  sleep h
+  play :f2, amp: 2
+  sleep 1.5
+  play :f2, amp: 2
+  sleep h
+  play :e2, amp: 2
+  sleep 1.5
+  play :e2, amp: 2
+  sleep h
+  play :d2, amp: 2
+end
