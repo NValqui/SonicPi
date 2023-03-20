@@ -1,44 +1,54 @@
-#Vers. 2 Slim Shady
+#Custom Song - The Real Slim Shady
 
 use_bpm 105
 whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
 h = 0.5
+a = 0.07
 
 sample whistle, amp: 2
 sleep 18
 
+
+
 1.times do
+  live_loop :fade_in do
+    a = a + 0.07
+    sleep h
+  end
   use_synth :piano
-  play :c, amp: 0.25
+  play :c, amp: a
   sleep h
-  play :eb, amp: 0.25
+  play :eb, amp: a
   sleep h
-  play :g, amp: 0.25
+  play :g, amp: a
   sleep h
-  play :ab, amp: 0.25
+  play :ab, amp: a
   sleep h
-  play :c5, amp: 0.5
+  play :c5, amp: a
   sleep 1.5
-  play :ab, amp: 0.5
+  play :ab, amp: a
   sleep h
-  play :g, amp: 0.5
+  play :g, amp: a
   sleep 1.5
-  play :ab
+  play :ab, amp: a
   sleep h
-  play :g
+  play :g, amp: a
   sleep 0.25
-  play :ab
+  play :ab, amp: a
   sleep 0.22
-  play :g
+  play :g, amp: a
   sleep h
-  play :f
+  play :f, amp: a
   sleep h
-  play :g
+  play :g, amp: a
   sleep h
-  play :b3
+  play :b3, amp: a
   sleep h
 end
 
+live_loop :fade_in do
+  stop
+end
 
 live_loop :s do
   play :c
@@ -91,8 +101,13 @@ live_loop :bass do
     play :e2, amp: 2
     sleep h
     play :d2, amp: 2
-    sleep 1.97
-    play :g2, amp: 2
-    sleep h
+    sleep 2.47
   end
+end
+
+sleep 8.47
+
+live_loop :snare do
+  sample :elec_snare
+  sleep 4
 end
