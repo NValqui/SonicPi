@@ -103,11 +103,11 @@ live_loop :bass do
     rss :e2,  2
     sleep h
     rss :d2,  2
-    sleep 2.47
+    sleep 2
   end
 end
 
-sleep 16.94
+sleep 16
 
 live_loop :h do
   sample :drum_cymbal_closed
