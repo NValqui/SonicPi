@@ -1,113 +1,157 @@
-#Custom Song - The Real Slim Shady
+#Testing Custom Song
 
 use_bpm 105
 whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
 h = 0.5
-a = 0.07
 
 sample whistle, amp: 2
+
 sleep 18
 
 
+define :rss do |note, amp|
+  play note, amp: amp
+end
 
+# MEASURE 1 - FADE IN ---------------------------
 1.times do
-  live_loop :fade_in do
-    a = a + 0.07
-    sleep h
-  end
   use_synth :piano
-  play :c, amp: a
+  rss :c, 0.07
   sleep h
-  play :eb, amp: a
+  rss:eb, 0.14
   sleep h
-  play :g, amp: a
+  rss :g, 0.21
   sleep h
-  play :ab, amp: a
+  rss :ab,  0.28
   sleep h
-  play :c5, amp: a
+  rss :c5, 0.35
   sleep 1.5
-  play :ab, amp: a
+  rss:ab, 0.42
   sleep h
-  play :g, amp: a
+  # MEASURE 2 - FADE IN ---------------------------
+  rss:g,  0.49
   sleep 1.5
-  play :ab, amp: a
+  rss :ab, 0.56
   sleep h
-  play :g, amp: a
+  rss :g,  0.63
   sleep 0.25
-  play :ab, amp: a
-  sleep 0.22
-  play :g, amp: a
+  rss :ab,  0.7
+  sleep 0.125
+  rss:g, 0.77
+  sleep 0.125
+  rss :f,  0.84
   sleep h
-  play :f, amp: a
+  rss :g, 0.91
   sleep h
-  play :g, amp: a
-  sleep h
-  play :b3, amp: a
+  rss :b3, 0.98
   sleep h
 end
 
-live_loop :fade_in do
-  stop
-end
 
 live_loop :s do
-  play :c
+  # MEASURE 1 ---------------------------
+  rss :c, 1
   sleep h
-  play :eb
+  rss:eb, 1
   sleep h
-  play :g
+  rss :g, 1
   sleep h
-  play :ab
+  rss :ab,  1
   sleep h
-  play :c5
+  rss :c5, 1
   sleep 1.5
-  play :ab
+  rss:ab, 1
   sleep h
-  play :g
+  # MEASURE 2 ---------------------------
+  rss:g,  1
   sleep 1.5
-  play :ab
+  rss :ab, 1
   sleep h
-  play :g
+  rss :g,  1
   sleep 0.25
-  play :ab
-  sleep 0.22
-  play :g
+  rss :ab,  1
+  sleep 0.125
+  rss:g, 1
+  sleep 0.125
+  rss :f,  1
   sleep h
-  play :f
+  rss :g, 1
   sleep h
-  play :g
-  sleep h
-  play :b3
+  rss :b3, 1
   sleep h
 end
 
 reset
-sleep 8.47
+sleep 8
 
 live_loop :bass do
   with_fx :compressor do
-    play :e1, amp: 2
+    # MEASURE 1 ---------------------------
+    rss :e1, 2
     sleep 1
-    play :d2, amp: 2
+    rss :d2, 2
     sleep h
-    play :e2, amp: 2
+    rss :e2, 2
     sleep h
-    play :f2, amp: 2
+    rss :f2,  2
     sleep 1.5
-    play :f2, amp: 2
+    rss :f2, 2
     sleep h
-    play :e2, amp: 2
+    # MEASURE 2 ---------------------------
+    rss:e2,  2
     sleep 1.5
-    play :e2, amp: 2
+    rss :e2,  2
     sleep h
-    play :d2, amp: 2
+    rss :d2,  2
     sleep 2.47
   end
 end
 
-sleep 8.47
+sleep 16.94
 
-live_loop :snare do
-  sample :elec_snare
-  sleep 4
+live_loop :h do
+  sample :drum_cymbal_closed
+  sleep 1
+end
+
+sleep 8
+
+
+live_loop :h do
+  use_bpm 112
+  sample :drum_cymbal_closed
+  sleep 1
+end
+
+use_bpm 112
+
+live_loop :s do
+  stop
+end
+
+live_loop :bass do
+  stop
+end
+
+sleep 8
+
+live_loop :sd do
+  sample :drum_snare_soft
+  sleep 2
+end
+
+sleep 8
+
+live_loop :bs do
+  
+  sample :drum_bass_soft
+  sleep 1
+  sample :drum_bass_soft
+  sleep 1
+  sample :drum_bass_soft
+  sleep 0.5
+  sample :drum_bass_soft
+  sleep 0.5
+  sample :drum_bass_soft
+  sleep 1
 end
