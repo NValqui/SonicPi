@@ -2,6 +2,15 @@
 
 use_bpm 105
 whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
+static = "C:/Users/nicholas_valqui/Documents/Audacity/static.wav"
+Em1 ="C:/Users/nicholas_valqui/Documents/Audacity/Em1.wav"
+Em2 ="C:/Users/nicholas_valqui/Documents/Audacity/Em2.wav"
+Em3 ="C:/Users/nicholas_valqui/Documents/Audacity/Em3.wav"
+Em4 ="C:/Users/nicholas_valqui/Documents/Audacity/Em4.wav"
+Em5 = "C:/Users/nicholas_valqui/Documents/Audacity/Em5.wav"
+Em = [Em1, Em2, Em3, Em4,]
+n = 1
+
 h = 0.5
 
 sample whistle, amp: 2
@@ -29,6 +38,7 @@ end
   rss:ab, 0.42
   sleep h
   # MEASURE 2 - FADE IN ---------------------------
+  sample (Em[0])
   rss:g,  0.49
   sleep 1.5
   rss :ab, 0.56
@@ -63,6 +73,7 @@ live_loop :s do
   rss:ab, 1
   sleep h
   # MEASURE 2 ---------------------------
+  sample (Em[n])
   rss:g,  1
   sleep 1.5
   rss :ab, 1
@@ -79,6 +90,7 @@ live_loop :s do
   sleep h
   rss :b3, 1
   sleep h
+  n = n + 1
 end
 
 reset
@@ -87,6 +99,7 @@ sleep 8
 live_loop :bass do
   with_fx :compressor do
     # MEASURE 1 ---------------------------
+    sample static
     rss :e1, 2
     sleep 1
     rss :d2, 2
@@ -107,7 +120,7 @@ live_loop :bass do
   end
 end
 
-sleep 16
+sleep 32
 
 live_loop :h do
   sample :drum_cymbal_closed
@@ -115,7 +128,6 @@ live_loop :h do
 end
 
 sleep 8
-
 
 live_loop :h do
   use_bpm 112
@@ -124,34 +136,10 @@ live_loop :h do
 end
 
 use_bpm 112
-
 live_loop :s do
   stop
 end
 
 live_loop :bass do
   stop
-end
-
-sleep 8
-
-live_loop :sd do
-  sample :drum_snare_soft
-  sleep 2
-end
-
-sleep 8
-
-live_loop :bs do
-  
-  sample :drum_bass_soft
-  sleep 1
-  sample :drum_bass_soft
-  sleep 1
-  sample :drum_bass_soft
-  sleep 0.5
-  sample :drum_bass_soft
-  sleep 0.5
-  sample :drum_bass_soft
-  sleep 1
 end
