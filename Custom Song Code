@@ -1,4 +1,4 @@
-#Testing Custom Song
+#Custom Song
 
 use_bpm 105
 whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
@@ -10,7 +10,7 @@ Em4 ="C:/Users/nicholas_valqui/Documents/Audacity/Em4.wav"
 Em5 = "C:/Users/nicholas_valqui/Documents/Audacity/Em5.wav"
 Em = [Em1, Em2, Em3, Em4,]
 n = 1
-
+a = 0.07
 h = 0.5
 
 sample whistle, amp: 2
@@ -21,42 +21,50 @@ sleep 18
 define :rss do |note, amp|
   play note, amp: amp
 end
-
 # MEASURE 1 - FADE IN ---------------------------
+
+live_loop :fade do
+  a = a + 0.07
+  sleep 1
+end
+
 1.times do
   use_synth :piano
-  rss :c, 0.07
+  rss :c, a
   sleep h
-  rss:eb, 0.14
+  rss:eb, a
   sleep h
-  rss :g, 0.21
+  rss :g, a
   sleep h
-  rss :ab,  0.28
+  rss :ab,  a
   sleep h
-  rss :c5, 0.35
+  rss :c5, a
   sleep 1.5
-  rss:ab, 0.42
+  rss:ab, a
   sleep h
   # MEASURE 2 - FADE IN ---------------------------
   sample (Em[0])
-  rss:g,  0.49
+  rss:g,  a
   sleep 1.5
-  rss :ab, 0.56
+  rss :ab, a
   sleep h
-  rss :g,  0.63
+  rss :g, a
   sleep 0.25
-  rss :ab,  0.7
+  rss :ab, a
   sleep 0.125
-  rss:g, 0.77
+  rss:g, a
   sleep 0.125
-  rss :f,  0.84
+  rss :f, a
   sleep h
-  rss :g, 0.91
+  rss :g, a
   sleep h
-  rss :b3, 0.98
+  rss :b3, a
   sleep h
 end
 
+live_loop :fade do
+  stop
+end
 
 live_loop :s do
   # MEASURE 1 ---------------------------
@@ -127,19 +135,44 @@ live_loop :h do
   sleep 1
 end
 
-sleep 8
-
-live_loop :h do
-  use_bpm 112
-  sample :drum_cymbal_closed
-  sleep 1
-end
-
-use_bpm 112
-live_loop :s do
-  stop
-end
+sleep 16
 
 live_loop :bass do
   stop
 end
+live_loop :s do
+  stop
+end
+
+sample Em5
+live_loop :h do
+  stop
+end
+
+live_loop :ht do
+  use_bpm 112
+  sample :drum_cymbal_closed
+  sleep 1
+end
+use_bpm 112
+live_loop :sd do
+  sample :drum_snare_soft
+  sleep 2
+end
+
+sleep 8
+
+live_loop :bs do
+  
+  sample :drum_bass_soft
+  sleep 1
+  sample :drum_bass_soft
+  sleep 1
+  sample :drum_bass_soft
+  sleep 0.5
+  sample :drum_bass_soft
+  sleep 0.5
+  sample :drum_bass_soft
+  sleep 1
+end
+
