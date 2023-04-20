@@ -1,0 +1,198 @@
+#Custom Song 1 
+
+use_bpm 105
+whistle = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
+static = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/static.wav"
+Em1 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em1.wav"
+Em2 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em2.wav"
+Em3 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em3.wav"
+Em4 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em4.wav"
+Em5 = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em5.wav"
+laugh = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em_Laugh.wav"
+transition = "C:/Users/nicho/OneDrive/Documents/Audacity/Transition.wav"
+SS1 = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/wah.wav"
+SS2 = "C:/Users/nicho/OneDrive/Documents/Audacity/wah2.wav"
+SS3 = "C:/Users/nicho/OneDrive/Documents/Audacity/SS3.wav"
+SS4 = "C:/Users/nicho/OneDrive/Documents/Audacity/SS4.wav"
+Em = [Em1, Em2, Em3, Em4]
+SS = [SS1, SS2, SS3, SS4]
+n = 1
+m = 1
+a = 0.07
+h = 0.5
+c = 8
+
+
+sample whistle, amp: 2
+
+sleep 18
+
+
+define :rss do |note, amp|
+  play note, amp: amp
+end
+# MEASURE 1 - FADE IN ---------------------------
+
+live_loop :fade do
+  a = a + 0.07
+  sleep 1
+end
+
+1.times do
+  use_synth :piano
+  rss :c, a
+  sleep h
+  rss:eb, a
+  sleep h
+  rss :g, a
+  sleep h
+  rss :ab,  a
+  sleep h
+  rss :c5, a
+  sleep 1.5
+  rss:ab, a
+  sleep h
+  # MEASURE 2 - FADE IN ---------------------------
+  sample (Em[0])
+  rss:g,  a
+  sleep 1.5
+  rss :ab, a
+  sleep h
+  rss :g, a
+  sleep 0.25
+  rss :ab, a
+  sleep 0.125
+  rss:g, a
+  sleep 0.125
+  rss :f, a
+  sleep h
+  rss :g, a
+  sleep h
+  rss :b3, a
+  sleep h
+end
+
+live_loop :fade do
+  stop
+end
+
+live_loop :s do
+  # MEASURE 1 ---------------------------
+  rss :c, 1
+  sleep h
+  rss:eb, 1
+  sleep h
+  rss :g, 1
+  sleep h
+  rss :ab,  1
+  sleep h
+  rss :c5, 1
+  sleep 1.5
+  rss:ab, 1
+  sleep h
+  # MEASURE 2 ---------------------------
+  sample (Em[n])
+  rss:g,  1
+  sleep 1.5
+  rss :ab, 1
+  sleep h
+  rss :g,  1
+  sleep 0.25
+  rss :ab,  1
+  sleep 0.125
+  rss:g, 1
+  sleep 0.125
+  rss :f,  1
+  sleep h
+  rss :g, 1
+  sleep h
+  rss :b3, 1
+  sleep h
+  n = n + 1
+end
+
+reset
+sleep 8
+
+live_loop :bass do
+  with_fx :compressor do
+    # MEASURE 1 ---------------------------
+    sample static
+    rss :e1, 2
+    sleep 1
+    rss :d2, 2
+    sleep h
+    rss :e2, 2
+    sleep h
+    rss :f2,  2
+    sleep 1.5
+    rss :f2, 2
+    
+    sleep h
+    # MEASURE 2 ---------------------------
+    rss:e2,  2
+    sleep 1.5
+    rss :e2,  2
+    sleep h
+    rss :d2,  2
+    sleep 2
+    
+  end
+end
+
+sleep 32
+
+8.times do
+  sample :drum_cymbal_closed
+  sleep 1
+end
+c = 1
+
+if c == 1
+  live_loop :bass do
+    stop
+  end
+  live_loop :s do
+    stop
+  end
+  
+  sample Em5
+  live_loop :h do
+    stop
+  end
+else
+  live_loop :s do
+    # MEASURE 1 ---------------------------
+    rss :c, 1
+    sleep h
+    rss:eb, 1
+    sleep h
+    rss :g, 1
+    sleep h
+    rss :ab,  1
+    sleep h
+    rss :c5, 1
+    sleep 1.5
+    rss:ab, 1
+    sleep h
+    # MEASURE 2 ---------------------------
+    sample (Em[n])
+    rss:g,  1
+    sleep 1.5
+    rss :ab, 1
+    sleep h
+    rss :g,  1
+    sleep 0.25
+    rss :ab,  1
+    sleep 0.125
+    rss:g, 1
+    sleep 0.125
+    rss :f,  1
+    sleep h
+    rss :g, 1
+    sleep h
+    rss :b3, 1
+    sleep h
+    n = n + 1
+  end
+end
