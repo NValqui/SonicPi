@@ -1,0 +1,139 @@
+# Custom Song 2 
+
+sample transition
+sleep 43
+sample WM
+sleep 12
+live_loop :t do
+  use_bpm 112
+  #Measure 1
+  sleep 0.5
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 0.5
+  #Measure 2
+  sleep 0.5
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 2
+  rss :g2, h
+  sleep 0.5
+end
+
+live_loop :b do
+  use_bpm 112
+  #Measure 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  #Measure 2
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 0.5
+  rss :d2, h
+  sleep 0.5
+  rss :e2, h
+  sleep 0.5
+  rss :d2, h
+  sleep 0.5
+  
+end
+
+sleep 16
+
+live_loop :wm do
+  use_bpm 112
+  use_synth :piano
+  #Measure 1
+  play :d4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :a4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :d4
+  sleep 2
+  #Measure 2
+  play :d4
+  sleep 0.5
+  play :c4
+  sleep 0.5
+  play :d4
+  sleep 0.5
+  play :f4
+  sleep 0.5
+  play :d4
+  sleep 2
+  #Measure 3
+  play :d4
+  sleep 0.5
+  play :c4
+  sleep 0.5
+  play :d4
+  sleep 0.5
+  play :c4
+  sleep 0.5
+  play :bb3
+  sleep 2
+  #Measure 4
+  play :bb3
+  sleep 0.5
+  play :a3
+  sleep 0.5
+  play :f3
+  sleep 0.5
+  play :g3
+  sleep 2.5
+end
+sleep 8
+live_loop :bs do
+  use_bpm 112
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+  sample :drum_bass_soft, amp: 1
+  sleep 0.5
+  sample :drum_bass_soft, amp: 1
+  sleep 0.5
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+end
+
+4.times do
+  sleep 15
+  sample (SS[m])
+  m = m + 1
+end
+
+sleep 16
+live_loop :bs do
+  stop
+end
+live_loop :wm do
+  stop
+end
+live_loop :t do
+  stop
+end
+
+live_loop :b do
+  stop
+end
+sleep 4
+sample laugh
