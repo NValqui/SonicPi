@@ -1,17 +1,27 @@
-#Custom Song
+#Final Custom Song Code
 
 use_bpm 105
-whistle = "C:/Users/nicholas_valqui/Documents/Audacity/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
-static = "C:/Users/nicholas_valqui/Documents/Audacity/static.wav"
-Em1 ="C:/Users/nicholas_valqui/Documents/Audacity/Em1.wav"
-Em2 ="C:/Users/nicholas_valqui/Documents/Audacity/Em2.wav"
-Em3 ="C:/Users/nicholas_valqui/Documents/Audacity/Em3.wav"
-Em4 ="C:/Users/nicholas_valqui/Documents/Audacity/Em4.wav"
-Em5 = "C:/Users/nicholas_valqui/Documents/Audacity/Em5.wav"
-Em = [Em1, Em2, Em3, Em4,]
+whistle = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Death Whistle Sound Effect-YoutubeConvert.cc.wav"
+static = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/static.wav"
+Em1 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em1.wav"
+Em2 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em2.wav"
+Em3 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em3.wav"
+Em4 ="C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em4.wav"
+Em5 = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em5.wav"
+laugh = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/Em_Laugh.wav"
+transition = "C:/Users/nicho/OneDrive/Documents/Audacity/Transition.wav"
+SS1 = "C:/Users/nicho/OneDrive/Desktop/drive-download-20230331T040104Z-001/wah.wav"
+SS2 = "C:/Users/nicho/OneDrive/Documents/Audacity/wah2.wav"
+SS3 = "C:/Users/nicho/OneDrive/Documents/Audacity/SS3.wav"
+SS4 = "C:/Users/nicho/OneDrive/Documents/Audacity/SS4.wav"
+Em = [Em1, Em2, Em3, Em4]
+SS = [SS1, SS2, SS3, SS4]
 n = 1
+m = 1
 a = 0.07
 h = 0.5
+c = 8
+
 
 sample whistle, amp: 2
 
@@ -117,6 +127,7 @@ live_loop :bass do
     rss :f2,  2
     sleep 1.5
     rss :f2, 2
+    
     sleep h
     # MEASURE 2 ---------------------------
     rss:e2,  2
@@ -125,58 +136,120 @@ live_loop :bass do
     sleep h
     rss :d2,  2
     sleep 2
+    
   end
 end
 
 sleep 32
 
-live_loop :h do
+8.times do
   sample :drum_cymbal_closed
   sleep 1
+end
+c = 1
+
+if c == 1
+  live_loop :bass do
+    stop
+  end
+  live_loop :s do
+    stop
+  end
+  
+  sample Em5
+  live_loop :h do
+    stop
+  end
+else
+  live_loop :s do
+    # MEASURE 1 ---------------------------
+    rss :c, 1
+    sleep h
+    rss:eb, 1
+    sleep h
+    rss :g, 1
+    sleep h
+    rss :ab,  1
+    sleep h
+    rss :c5, 1
+    sleep 1.5
+    rss:ab, 1
+    sleep h
+    # MEASURE 2 ---------------------------
+    sample (Em[n])
+    rss:g,  1
+    sleep 1.5
+    rss :ab, 1
+    sleep h
+    rss :g,  1
+    sleep 0.25
+    rss :ab,  1
+    sleep 0.125
+    rss:g, 1
+    sleep 0.125
+    rss :f,  1
+    sleep h
+    rss :g, 1
+    sleep h
+    rss :b3, 1
+    sleep h
+    n = n + 1
+  end
+end
+
+sample transition
+sleep 43
+sample WM
+sleep 12
+live_loop :t do
+  use_bpm 112
+  #Measure 1
+  sleep 0.5
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 0.5
+  #Measure 2
+  sleep 0.5
+  rss :g2, h
+  sleep 1
+  rss :g2, h
+  sleep 2
+  rss :g2, h
+  sleep 0.5
+end
+
+live_loop :b do
+  use_bpm 112
+  #Measure 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 1
+  #Measure 2
+  sleep 1
+  rss :g1, h
+  sleep 1
+  rss :g1, h
+  sleep 0.5
+  rss :d2, h
+  sleep 0.5
+  rss :e2, h
+  sleep 0.5
+  rss :d2, h
+  sleep 0.5
+  
 end
 
 sleep 16
-
-live_loop :bass do
-  stop
-end
-live_loop :s do
-  stop
-end
-
-sample Em5
-live_loop :h do
-  stop
-end
-
-live_loop :ht do
-  use_bpm 112
-  sample :drum_cymbal_closed
-  sleep 1
-end
-use_bpm 112
-live_loop :sd do
-  sample :drum_snare_soft
-  sleep 2
-end
-
-sleep 8
-
-live_loop :bs do
-  use_bpm 112
-  sample :drum_bass_soft
-  sleep 1
-  sample :drum_bass_soft
-  sleep 1
-  sample :drum_bass_soft
-  sleep 0.5
-  sample :drum_bass_soft
-  sleep 0.5
-  sample :drum_bass_soft
-  sleep 1
-end
-
-sleep 8
 
 live_loop :wm do
   use_bpm 112
@@ -224,3 +297,40 @@ live_loop :wm do
   play :g3
   sleep 2.5
 end
+sleep 8
+live_loop :bs do
+  use_bpm 112
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+  sample :drum_bass_soft, amp: 1
+  sleep 0.5
+  sample :drum_bass_soft, amp: 1
+  sleep 0.5
+  sample :drum_bass_soft, amp: 1
+  sleep 1
+end
+
+4.times do
+  sleep 15
+  sample (SS[m])
+  m = m + 1
+end
+
+sleep 16
+live_loop :bs do
+  stop
+end
+live_loop :wm do
+  stop
+end
+live_loop :t do
+  stop
+end
+
+live_loop :b do
+  stop
+end
+sleep 4
+sample laugh
